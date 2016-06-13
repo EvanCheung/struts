@@ -1,3 +1,4 @@
+/*struts action 注解 输出文件流的方法*/
 @Result
 (name="success",value="inputStream",type=StreamResult.class,
 params={"bufferSize",FileConstant.DOWNLOAD_BUFFER_SIZE})

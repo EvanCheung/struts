@@ -1,0 +1,14 @@
+@Result
+(name="success",value="inputStream",type=StreamResult.class,
+params={"bufferSize",FileConstant.DOWNLOAD_BUFFER_SIZE})
+
+@Result
+(name = "search",value= "search",type=ActionChainResult.class,
+params={"method","search"})
+
+
+@Results({
+@Result(name="input" value="/input.jsp" type=NullResult.class),
+@Reuslt(name="success" value="/success.jsp" type=NullResult.class),
+@Result(name="error" value="/error.jsp" type=NullResult.class)
+})

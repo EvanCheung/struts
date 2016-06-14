@@ -13,3 +13,33 @@ params={"method","search"})
 @Reuslt(name="success" value="/success.jsp" type=NullResult.class),
 @Result(name="error" value="/error.jsp" type=NullResult.class)
 })
+
+
+
+/**
+contentType 指定下载文件的文件类型 —— application/octet-stream表示无限制
+
+inputName 流对象名 ——比如这里写inputStream，它就会自动去找Action中的getInputStream方法。
+
+contentDisposition 使用经过转码的文件名作为下载文件名 ——默认格式是attachment;filename="${fileName}"，将调用该Action中的getFileName方法。
+
+bufferSize 下载文件的缓冲大小
+*/
+	@Action(value="toPrintPDFSend",results={
+			@Result(name="success",type="stream",
+					params={"bufferSize","4096",
+							"inputName","inputStream",
+							"contentType","application/octet-stream",
+							"contentDisposition","attachment;filename=test1.pdf"})
+			})
+	public String downloadFile(){
+	  return SUCCESS;
+	}
+	
+	/**
+	getInputStream()方法对应 "inputName","inputStream" 
+	*/
+	public InputStream getInputStream() throws Exception{
+		return new FileInputStream("e:/temp/test_1465896696935.pdf");
+	}
+
